@@ -20,11 +20,13 @@ public class Payments {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
-    private int Session_id;
+    @ManyToOne
+    @JoinColumn(name = "session_id", nullable = false)
+    private Sessions Session_id;
 
-    @Column
-    private int Student_id;
+    @ManyToOne
+    @JoinColumn(name = "student_id", nullable = false)
+    private Student Student_id;
 
     @Column
     private String reciept_url;
