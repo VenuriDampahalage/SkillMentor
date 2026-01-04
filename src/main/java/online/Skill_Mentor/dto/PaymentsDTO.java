@@ -18,5 +18,5 @@ public class PaymentsDTO {
 
     @NotBlank(message = "Put the reciept url!")
     private String reciept_url;
-    
+
 }
