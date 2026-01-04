@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 
 @Entity
 @AllArgsConstructor
@@ -36,4 +37,8 @@ public class Student {
     @UpdateTimestamp
     @Column(name = "updated_at")
     private LocalDateTime updated_at;
+
+    @ManyToMany(mappedBy = "student_Id")
+    private Collection<Sessions> sessions;
+
 }
