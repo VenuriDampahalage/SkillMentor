@@ -3,7 +3,7 @@ package online.Skill_Mentor.services.impl;
 import lombok.RequiredArgsConstructor;
 import online.Skill_Mentor.dto.SubjectDTO;
 import online.Skill_Mentor.entities.Subject;
-import online.Skill_Mentor.repositories.SubjectRepository;
+import online.Skill_Mentor.repositories.SubjectRepo;
 import online.Skill_Mentor.services.SubjectService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class SubjectServiceImpl implements SubjectService {
-    private final SubjectRepository subjectRepository;
+    private final SubjectRepo subjectRepository;
     private final ModelMapper modelMapper;
 
     @Override
