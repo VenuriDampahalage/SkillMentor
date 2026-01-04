@@ -34,7 +34,7 @@ public class Payments {
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
-    private LocalDateTime amount;
+    private LocalDateTime created_at;
 
     @UpdateTimestamp
     @Column(name = "updated_at")
