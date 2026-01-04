@@ -20,11 +20,11 @@ public class Payments {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne //Many payments belong to one session
     @JoinColumn(name = "session_id", nullable = false)
     private Sessions Session_id;
 
-    @ManyToOne
+    @ManyToOne //Many payments belong to ONE student
     @JoinColumn(name = "student_id", nullable = false)
     private Student Student_id;
 
