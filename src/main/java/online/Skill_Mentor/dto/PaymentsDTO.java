@@ -1,12 +1,11 @@
 package online.Skill_Mentor.dto;
 
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.*;
 import lombok.Data;
 import org.hibernate.validator.constraints.URL;
 
 @Data
-public class PatmentsDTO {
+public class PaymentsDTO {
 
     @NotNull
     @PositiveOrZero
