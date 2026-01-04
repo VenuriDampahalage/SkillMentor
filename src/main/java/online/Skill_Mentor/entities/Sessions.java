@@ -21,11 +21,13 @@ public class Sessions {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
-    private int student_Id;
+    @ManyToOne //Many Session belongs to Many students
+    @JoinColumn(name = "student_id", nullable = false)
+    public Student student_id;
 
-    @Column(nullable = false, unique = true)
-    private int mentor_Id;
+    @OneToOne //One Session belongs to One Mentor
+    @JoinColumn(name = "mentor_id",nullable = false)
+    private Mentors mentor_id;
 
     @Column(nullable = false, unique = true)
     private int session_at;
