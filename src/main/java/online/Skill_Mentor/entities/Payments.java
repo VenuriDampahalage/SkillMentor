@@ -18,15 +18,17 @@ public class Payments {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id; //1
 
-    @ManyToOne //Many payments belong to one session
+    //Many payments belong to one session
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "session_id", nullable = false)
-    private Sessions Session_id;
+    private Sessions session_id;
 
-    @ManyToOne //Many payments belong to ONE student
+    //Many payments belong to one student
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "student_id", nullable = false)
-    private Student Student_id;
+    private Student student_id;
 
     @Column
     private String reciept_url;
