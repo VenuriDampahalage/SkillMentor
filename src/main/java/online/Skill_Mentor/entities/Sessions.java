@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 @Entity
@@ -19,42 +20,53 @@ public class Sessions {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id; //1
 
-    @ManyToOne //Many Session belongs to Many students
+    //Many Session belongs to One students
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "student_id", nullable = false)
-    public Student student_id;
+    public Student student_id; //2
 
-    @OneToOne //One Session belongs to One Mentor
-    @JoinColumn(name = "mentor_id",nullable = false)
-    private Mentors mentor_id;
+    //Many Session belongs to One Mentor
+    @ManyToOne (fetch = FetchType.LAZY)
+    @JoinColumn(name = "mentor_id")
+    private Mentors mentor_id; //3
+
+    //Many Sessions belong to one subject
+    @ManyToOne (fetch = FetchType.LAZY)
+    @JoinColumn(name = "subject_id")
+    private Subject subject_id; //4
 
     @Column(nullable = false, unique = true)
-    private int session_at;
+    private int session_at; //5
 
     @Column(nullable = false)
-    private int duration_minutes;
+    private int duration_minutes; //6
 
     @Column(nullable = false)
-    private String session_status;
+    private String session_status; //7
 
     @Column(nullable = true)
-    private String meeting_links;
+    private String meeting_links; //8
 
     @Column(nullable = false)
-    private String session_notes;
+    private String session_notes; //9
 
     @Column(length = 500, nullable = false, updatable = false)
-    private String student_review;
+    private String student_review; //10
 
     @Column(nullable = false, updatable = true)
-    private int student_rating;
+    private int student_rating; //11
 
     @CreationTimestamp
     @Column(name = "session_rating")
-    private LocalDateTime session_rating;
+    private LocalDateTime session_rating; //12
 
     @UpdateTimestamp
     @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+    private LocalDateTime updatedAt; //13
+
+    //One session have one payment
+    @OneToOne(mappedBy = "session_id")
+    private Payments payments;
 }
