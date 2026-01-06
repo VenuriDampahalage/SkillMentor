@@ -9,6 +9,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -19,26 +20,34 @@ public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id; //1
 
     @Column(nullable = false)
-    private String first_name;
+    private String email; //2
 
     @Column(nullable = false)
-    private String last_name;
+    private String first_name; //3
 
     @Column(nullable = false)
-    private String learning_goals;
+    private String last_name; //4
+
+    @Column(nullable = false)
+    private String learning_goals; //5
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
-    private LocalDateTime created_at;
+    private LocalDateTime created_at; //6
 
     @UpdateTimestamp
     @Column(name = "updated_at")
-    private LocalDateTime updated_at;
+    private LocalDateTime updated_at;  //7
 
-    @ManyToMany(mappedBy = "student_Id")
+    //One student belongs to many sessions
+    @OneToMany(mappedBy = "student_id")
     private Collection<Sessions> sessions;
+
+    //One student have many payments
+    @OneToMany(mappedBy = "student_id")
+    private Collection<Payments> payments;
 
 }
