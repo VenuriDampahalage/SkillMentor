@@ -8,6 +8,7 @@ import online.Skill_Mentor.services.SubjectService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -68,6 +69,19 @@ public class SubjectServiceImpl implements SubjectService {
 
     @Override
     public List<Subject> getOrCreateSubjects(List<Subject> subjects) {
-        return List.of();
+
+        List<Subject> newSubjects = new ArrayList<>();
+
+        for(int i = 0; i < subjects.size(); i++){
+            if(subjectRepository.existsById(subjects.get(i).getId())){
+                newSubjects.add(subjects.get(i));
+            }
+            else{
+                 Subject newSubject = subjectRepository.save(subjects.get(i));
+                 newSubjects.add(newSubject);
+            }
+        }
+
+        return newSubjects;
     }
 }
