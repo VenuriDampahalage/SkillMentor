@@ -23,24 +23,24 @@ public class Payment {
     //Many payments belong to one session
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "session_id", nullable = false)
-    private Session session_id;
+    private Session session_id; //2
 
     //Many payments belong to one student
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "student_id", nullable = false)
-    private Student student_id;
+    private Student student_id; //3
 
     @Column
-    private String reciept_url;
+    private String reciept_url; //4
 
     @Column
-    private String notes;
+    private String notes; //5
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
-    private LocalDateTime created_at;
+    private LocalDateTime created_at; //6
 
     @UpdateTimestamp
     @Column(name = "updated_at")
-    private LocalDateTime updated_at;
+    private LocalDateTime updated_at; //7
 }

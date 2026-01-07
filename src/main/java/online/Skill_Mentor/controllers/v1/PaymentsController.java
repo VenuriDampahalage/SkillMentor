@@ -25,10 +25,29 @@ public class PaymentsController {
         return paymentService.getAllPayments();
     }
 
+    //Get info by id
+    @GetMapping("/{id}")
+    public Payment getPaymentById(@PathVariable Long id) {
+        return paymentService.getPaymentById(id);
+    }
+
     //Create resource
     @PostMapping
     public Payment createSubject(@Validated @RequestBody PaymentsDTO newPayment) {
         Payment payment = modelMapper.map(newPayment, Payment.class);
         return paymentService.createPayment(payment);
+    }
+
+    //Update resource
+    @PutMapping("/{id}")
+    public Payment updateSubject(@PathVariable Long id, @Validated @RequestBody PaymentsDTO newPayment) {
+        Payment payment = modelMapper.map(newPayment, Payment.class);
+        return paymentService.updatePayment(id, payment);
+    }
+
+    //Delete resource
+    @DeleteMapping("/{id}")
+    public void deletePaymentById(@PathVariable Long id) {
+        paymentService.deletePaymentById(id);
     }
 }
