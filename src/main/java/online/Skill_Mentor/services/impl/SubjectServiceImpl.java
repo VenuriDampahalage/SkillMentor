@@ -23,7 +23,11 @@ public class SubjectServiceImpl implements SubjectService {
 
     @Override
     public Subject getSubjectById(Long id) {
-        return null;
+        if (subjectRepository.existsById(id)) {
+            return subjectRepository.findById(id).get();
+        }
+        else
+            return null;
     }
 
     @Override
@@ -34,21 +38,23 @@ public class SubjectServiceImpl implements SubjectService {
 
     @Override
     public Subject updateSubject(Long id, Subject subject) {
-        return null;
+
+        if (subjectRepository.existsById(id)) {
+            Subject oldSubject = subjectRepository.findById(id).get();
+            oldSubject.setName(subject.getName());
+
+            return subjectRepository.save(oldSubject);
+        }
+        else
+            return null;
+
     }
-
-    public Subject updateSubject(Long id, SubjectDTO subjectDTO) {
-        Subject subject = getSubjectById(id);
-        modelMapper.map(subjectDTO, subject);
-        return subjectRepository.save(subject);
-    }
-
-
 
     @Override
     public Subject patchSubject(Long id, Subject subject) {
         return null;
     }
+
 
     @Override
     public void deleteSubject(Long id) {
