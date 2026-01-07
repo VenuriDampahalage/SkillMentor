@@ -8,6 +8,7 @@ import online.Skill_Mentor.services.SubjectService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,8 +52,15 @@ public class SubjectServiceImpl implements SubjectService {
 
     }
 
+    //Update only the fields that has been specified
     @Override
     public Subject patchSubject(Long id, Subject subject) {
+        if (subjectRepository.existsById(id)) {
+            patchSubject(id, subject);
+        }
+        else{
+            System.out.println("There is no such subject");
+        }
         return null;
     }
 
