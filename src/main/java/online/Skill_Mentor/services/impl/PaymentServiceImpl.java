@@ -3,7 +3,7 @@ package online.Skill_Mentor.services.impl;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import online.Skill_Mentor.entities.Payments;
+import online.Skill_Mentor.entities.Payment;
 import online.Skill_Mentor.repositories.PaymentsRepo;
 import online.Skill_Mentor.services.PaymentsService;
 import org.springframework.stereotype.Service;
@@ -19,28 +19,28 @@ public class PaymentServiceImpl implements PaymentsService {
     private final PaymentsRepo paymentsRepository;
 
     @Override
-    public List<Payments> getAllPayments() {
-        return PaymentsRepo.findAll();
+    public List<Payment> getAllPayments() {
+        return paymentsRepository.findAll();
     }
 
     @Override
-    public Payments getPaymentById(Long id) {
+    public Payment getPaymentById(Long id) {
         return null;
     }
 
     @Override
-    public Payments createPayment(Payments payment) {
-        Payments newPayment = paymentsRepository.save(payment);
+    public Payment createPayment(Payment payment) {
+        Payment newPayment = paymentsRepository.save(payment);
         return newPayment;
     }
 
     @Override
-    public Payments updatePayment(Long id, Payments payment) {
+    public Payment updatePayment(Long id, Payment payment) {
         return null;
     }
 
     @Override
-    public Payments patchPayment(Long id, Payments payment) {
+    public Payment patchPayment(Long id, Payment payment) {
         return null;
     }
 
@@ -50,7 +50,7 @@ public class PaymentServiceImpl implements PaymentsService {
     }
 
     @Override
-    public List<Payments> getOrderPayments(List<Payments> payments) {
+    public List<Payment> getOrderPayments(List<Payment> payments) {
         return List.of();
     }
 }

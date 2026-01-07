@@ -16,7 +16,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "Mentors")
-public class Mentors {
+public class Mentor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,6 +59,6 @@ public class Mentors {
 
     //One Mentor belongs to many sessions
     @OneToMany(mappedBy = "mentor_id")
-    private Collection<Sessions> sessions;
+    private Collection<Session> sessions;
 
 }

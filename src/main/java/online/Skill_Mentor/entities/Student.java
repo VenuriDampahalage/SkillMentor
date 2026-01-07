@@ -9,7 +9,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -44,10 +43,10 @@ public class Student {
 
     //One student belongs to many sessions
     @OneToMany(mappedBy = "student_id")
-    private Collection<Sessions> sessions;
+    private Collection<Session> sessions;
 
     //One student have many payments
     @OneToMany(mappedBy = "student_id")
-    private Collection<Payments> payments;
+    private Collection<Payment> payments;
 
 }

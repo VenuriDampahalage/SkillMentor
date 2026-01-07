@@ -34,6 +34,6 @@ public class Subject {
 
     //One Subject Belongs to Many Sessions
     @OneToMany(mappedBy = "subject_id")
-    private Collection<Sessions> sessions;
+    private Collection<Session> sessions;
 
 }

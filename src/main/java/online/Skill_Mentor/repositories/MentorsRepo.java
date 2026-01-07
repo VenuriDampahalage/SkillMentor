@@ -1,7 +1,7 @@
 package online.Skill_Mentor.repositories;
 
-import online.Skill_Mentor.entities.Mentors;
+import online.Skill_Mentor.entities.Mentor;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface MentorsRepo extends JpaRepository<Mentors, Long> {
+public interface MentorsRepo extends JpaRepository<Mentor, Long> {
 }

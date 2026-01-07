@@ -8,7 +8,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 
 @Entity
@@ -16,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "Sessions")
-public class Sessions {
+public class Session {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +29,7 @@ public class Sessions {
     //Many Session belongs to One Mentor
     @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "mentor_id")
-    private Mentors mentor_id; //3
+    private Mentor mentor_id; //3
 
     //Many Sessions belong to one subject
     @ManyToOne (fetch = FetchType.LAZY)
@@ -68,5 +67,5 @@ public class Sessions {
 
     //One session have one payment
     @OneToOne(mappedBy = "session_id")
-    private Payments payments;
+    private Payment payment;
 }

@@ -2,12 +2,8 @@ package online.Skill_Mentor.controllers.v1;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import online.Skill_Mentor.dto.PaymentsDTO;
-import online.Skill_Mentor.dto.SubjectDTO;
-import online.Skill_Mentor.entities.Payments;
-import online.Skill_Mentor.entities.Subject;
-import online.Skill_Mentor.services.SubjectService;
+import online.Skill_Mentor.entities.Payment;
 import online.Skill_Mentor.services.impl.PaymentServiceImpl;
 import org.modelmapper.ModelMapper;
 import org.springframework.validation.annotation.Validated;
@@ -25,14 +21,14 @@ public class PaymentsController {
 
     //Retrieve resources
     @GetMapping
-    public List<Payments> getAllSubjects() {
-        return PaymentServiceImpl.getAllPayments();
+    public List<Payment> getAllSubjects() {
+        return paymentService.getAllPayments();
     }
 
     //Create resource
     @PostMapping
-    public Payments createSubject(@Validated @RequestBody PaymentsDTO newPayment) {
-        Payments payments = modelMapper.map(newPayment, Payments.class);
-        return PaymentServiceImpl.createPayment(payments);
+    public Payment createSubject(@Validated @RequestBody PaymentsDTO newPayment) {
+        Payment payment = modelMapper.map(newPayment, Payment.class);
+        return paymentService.createPayment(payment);
     }
 }
