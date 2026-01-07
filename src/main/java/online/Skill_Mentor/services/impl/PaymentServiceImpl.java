@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import online.Skill_Mentor.entities.Payments;
+import online.Skill_Mentor.repositories.PaymentsRepo;
 import online.Skill_Mentor.services.PaymentsService;
 import org.springframework.stereotype.Service;
 
@@ -11,14 +12,15 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @Data
 public class PaymentServiceImpl implements PaymentsService {
 
+    private final PaymentsRepo paymentsRepository;
 
     @Override
-    public List<Payments> getPayments() {
-        return List.of();
+    public List<Payments> getAllPayments() {
+        return PaymentsRepo.findAll();
     }
 
     @Override
@@ -28,7 +30,8 @@ public class PaymentServiceImpl implements PaymentsService {
 
     @Override
     public Payments createPayment(Payments payment) {
-        return null;
+        Payments newPayment = paymentsRepository.save(payment);
+        return newPayment;
     }
 
     @Override

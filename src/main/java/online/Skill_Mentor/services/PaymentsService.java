@@ -5,7 +5,7 @@ import online.Skill_Mentor.entities.Payments;
 import java.util.List;
 
 public interface PaymentsService {
-    List<Payments> getPayments();
+    List<Payments> getAllPayments();
     Payments getPaymentById(Long id);
     Payments createPayment(Payments payment);
     Payments updatePayment(Long id, Payments  payment);
