@@ -59,7 +59,10 @@ public class SubjectController {
         return subjectServiceImpl.updateSubject(id, subject);
     }
 
-
+    @DeleteMapping("/{id}")
+    public void deleteSubject(@PathVariable Long id) {
+        subjectServiceImpl.deleteSubject(id);
+    }
 
 }
 

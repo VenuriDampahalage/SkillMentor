@@ -58,7 +58,12 @@ public class SubjectServiceImpl implements SubjectService {
 
     @Override
     public void deleteSubject(Long id) {
-
+        if (subjectRepository.existsById(id)) {
+            subjectRepository.deleteById(id);
+        }
+        else{
+            System.out.println("There is no such subject");
+        }
     }
 
     @Override
