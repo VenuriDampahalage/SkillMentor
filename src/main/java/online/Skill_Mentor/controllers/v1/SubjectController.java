@@ -10,6 +10,19 @@ import online.Skill_Mentor.services.impl.SubjectServiceImpl;
 
 import java.util.List;
 
+
+
+/*URL mapping (@GetMapping, @PostMapping, …)
+
+ HTTP verbs (GET, POST, PUT, PATCH, DELETE)
+
+ Reading request data (@RequestBody, @PathVariable)
+
+ Returning HTTP responses (ResponseEntity)
+
+ Status codes (200, 201, 404, 400)*/
+
+
 @RestController
 @RequestMapping(path = "api/v1/subjects")
 @RequiredArgsConstructor
@@ -20,16 +33,32 @@ public class SubjectController {
     private final SubjectServiceImpl subjectServiceImpl;
 
 
+    //Get all subjects
     @GetMapping
     public List<Subject> getAllSubjects() {
         return  subjectServiceImpl.getAllSubjects();
     }
 
+    //get subject by id
+    @GetMapping("/{id}")
+    public Subject getSubject(@RequestParam("id") Long id) {
+        return subjectServiceImpl.getSubjectById(id);
+    }
+
+    //Create new subject
     @PostMapping
     public Subject createSubject(@Validated @RequestBody SubjectDTO newSubject) {
         Subject subject = modelMapper.map(newSubject, Subject.class);
         return subjectServiceImpl.createSubject(subject);
     }
+
+    //Update Subject
+    @PutMapping("/{id}")
+    public Subject updateSubject(@PathVariable Long id, @Validated @RequestBody SubjectDTO newSubject) {
+        Subject subject = modelMapper.map(newSubject, Subject.class);
+        return subjectServiceImpl.updateSubject(id, subject);
+    }
+
 }
 
 
