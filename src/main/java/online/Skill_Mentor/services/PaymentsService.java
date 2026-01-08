@@ -4,6 +4,8 @@ import online.Skill_Mentor.entities.Payment;
 
 import java.util.List;
 
+//no usage = 2
+
 public interface PaymentsService {
     List<Payment> getAllPayments();
     Payment getPaymentById(Long id);

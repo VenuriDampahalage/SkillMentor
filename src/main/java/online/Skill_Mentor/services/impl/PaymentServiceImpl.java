@@ -48,10 +48,16 @@ public class PaymentServiceImpl implements PaymentsService {
              oldPayment.setStudent_id(payment.getStudent_id());
              oldPayment.setReciept_url(payment.getReciept_url());
              oldPayment.setNotes(payment.getNotes());
+
+             return  paymentsRepository.save(oldPayment);
+         }
+         else{
+             System.out.println("There is no such Payment");
          }
         return null;
     }
 
+    //Check
     @Override
     public Payment patchPayment(Long id, Payment payment) {
         return null;
@@ -66,6 +72,7 @@ public class PaymentServiceImpl implements PaymentsService {
             return;
     }
 
+    //Check
     @Override
     public List<Payment> getOrderPayments(List<Payment> payments) {
         return List.of();
