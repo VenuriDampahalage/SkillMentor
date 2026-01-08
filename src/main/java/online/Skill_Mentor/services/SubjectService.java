@@ -4,6 +4,8 @@ import online.Skill_Mentor.entities.Subject;
 
 import java.util.List;
 
+//no usage = 1
+
 public interface SubjectService {
     List<Subject> getAllSubjects();
     Subject getSubjectById(Long id);

@@ -47,9 +47,10 @@ public class SubjectServiceImpl implements SubjectService {
 
             return subjectRepository.save(oldSubject);
         }
-        else
-            return null;
-
+        else{
+            System.out.println("There is no such subject");
+        }
+        return null;
     }
 
     //Update only the fields that has been specified
