@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 public class StudentServiceImpl implements StudentService {
-    
+
     private final StudentRepo studentRepository;
 
     @Override
