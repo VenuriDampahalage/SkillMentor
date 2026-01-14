@@ -7,6 +7,8 @@ import online.Skill_Mentor.entities.Payment;
 import online.Skill_Mentor.entities.Subject;
 import online.Skill_Mentor.repositories.PaymentsRepo;
 import online.Skill_Mentor.services.PaymentsService;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,7 +19,13 @@ import java.util.List;
 @Data
 public class PaymentServiceImpl implements PaymentsService {
 
-    private final PaymentsRepo paymentsRepository;
+    private PaymentsRepo paymentsRepository;
+    private ModelMapper modelMapper;
+
+    @Autowired
+    public PaymentServiceImpl(ModelMapper modelMapper) {
+        this.modelMapper = modelMapper;
+    }
 
     @Override
     public List<Payment> getAllPayments() {
@@ -36,8 +44,8 @@ public class PaymentServiceImpl implements PaymentsService {
 
     @Override
     public Payment createPayment(Payment payment) {
-        Payment newPayment = paymentsRepository.save(payment);
-        return newPayment;
+        Payment newPayment = modelMapper.map(payment, Payment.class);
+        return  paymentsRepository.save(newPayment);
     }
 
     @Override

@@ -34,8 +34,8 @@ public class SubjectServiceImpl implements SubjectService {
 
     @Override
     public Subject createSubject(Subject subject) {
-        Subject newSubject = subjectRepository.save(subject);
-        return newSubject;
+        Subject newSubject = modelMapper.map(subject, Subject.class);
+        return subjectRepository.save(newSubject);
     }
 
     @Override
