@@ -22,7 +22,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Student getStudentById(int id) {
+    public Student getStudentById(Long id) {
         return null;
     }
 
